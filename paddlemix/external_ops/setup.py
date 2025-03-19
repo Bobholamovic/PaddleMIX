@@ -14,6 +14,7 @@
 
 import multiprocessing
 import os
+import sys
 
 
 def get_gencode_flags():
@@ -28,6 +29,8 @@ def run(func):
     p = multiprocessing.Process(target=func)
     p.start()
     p.join()
+    if p.exitcode != 0:
+        sys.exit(1)
 
 
 def change_pwd():
