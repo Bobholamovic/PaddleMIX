@@ -63,7 +63,7 @@ class ServerConfig:
 def create_app(config: ServerConfig):
     app = FastAPI()
 
-    model = Qwen2VLForConditionalGeneration.from_pretrained(config.model_path, dtype="bfloat16")
+    model = Qwen2VLForConditionalGeneration.from_pretrained(config.model_path, dtype="float16")
     image_processor = Qwen2VLImageProcessor()
     tokenizer = MIXQwen2Tokenizer.from_pretrained(config.model_path)
     processor = Qwen2VLProcessor(image_processor, tokenizer)
