@@ -140,7 +140,7 @@ def create_app(config: ServerConfig):
         yield "data: [DONE]\n\n"
 
     @app.post("/v1/chat/completions/chat/completions")
-    async def create_chat_completion(request: ChatCompletionRequest):
+    def create_chat_completion(request: ChatCompletionRequest):
         try:
             system_message, user_message, image_inputs, video_inputs = process_messages(request.messages)
 
